@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Roboto:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+Header.hd{
+    height:50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #00b67d;
+    padding:20px;
+    align-items: center;
+    font-family: "Merriweather", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;;
+    border:2px solid black;
+    overflow: hidden;
+    border-radius: 5px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.hd nav > ul{
+    list-style-type: none;
+}
+.hd nav a{
+    text-decoration: none;
+    color:black;
+}
+.hd nav a:hover,.hd .addNote a:hover{
+    color:#EFF8C9;
+}
+
+.hd .addNote a{
+    font-size: 20px;
+    color:black;
+}
+.noteApp{
+    margin-top:80px;
+    display:flex;
+    flex-direction: column;
+}
+.noteApp .search{
+    margin: 0 auto;
+    width:50%;
+    height:40px;
+    padding:15px;
+    border-radius:8px;
+    font-size:16px;
+    background-color: #EFF8C9;
+    color:black;
+    margin-top:40px;
+    border-color:#00b67d;
+    outline: none;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+.Gimage{
+    margin-top:-35px;
+    display: flex;
+    height:500px;
+    flex-direction: row;
+}
+.Gimage .left p{
+    font-family: "Merriweather", serif;
+    font-weight: 500;
+    font-style: normal;
+}
+.Gimage .left{
+ width: 600px;
+ height:500px;
+ padding:35px;
+ font-size: 18px;
+ margin-right:20px;
+ display: flex;
+ justify-content: center;
+ text-align:center;
+ flex-direction: column;
+ align-items: center;
+
+}
+
+.Gimage .left a{
+    height:50px;
+    width: 130px;
+    background-color: #00b67d;
+    padding:10px;
+    margin-top:25px;
+    font-size: 16px;
+    border-radius:10px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color:black;
+    box-shadow: 8px 8px #EFF8C9;
+    font-weight: 700;
+}
+.left a:hover{
+    color:#EFF8C9;
+}
+.Gimage .right{
+    background-color:#00b67d;
+    width: 800px;
+    border-radius:10px;
+}
+.Gimage .right img{
+    border-radius:10px;
+    }
+   .notFound{
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
+   }
+   .notFound h2{
+    text-decoration: underline;
+   }
+
+.noteApp h1.title{
+    padding:10px;
+    font-size:40px;
+    border:1px solid black;
+    margin-bottom:40px;
+    border-radius:5px;
+}
+.noteApp h1.tl{
+    margin-top: 50px;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom:30px;
+}
+form.noteInput{
+    margin-top: 80px;
+    
+}
+
+.noteInput{
+    margin-top:300px;
+    display:flex;
+    flex-direction:column;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 0 auto;
+    width:700px;
+    padding:15px;
+    background-color: #EFF8C9;
+    box-shadow: 8px 8px #00b67d;
+}
+.noteInput h1{
+    text-align:center;
+    margin-bottom:10px;
+}
+.noteInput input[type=text] ,
+button[type=submit]
+{
+ height:40px;
+ margin:5px;
+ padding:10px;
+ font-size: 16px;
+ font-family: "Merriweather", serif;
+ font-weight: 700;
+ font-style: normal;
+}
+.noteInput .btn-Add{
+    background-color: #00b67d;
+    border-radius: 5px;
+}
+.noteInput input[type=text]{
+    outline:none;
+    border-radius: 3px;
+}
+.noteInput textarea{
+    border-radius: 3px;
+    height:300px;
+    margin:5px;
+    padding:10px;
+    font-size: 16px;
+    outline: none;
+}
+ .noteInput textarea:focus{
+    border: 2px solid #00b67d;
+}
+.noteInput input[type=text]:focus{
+    border: 2px solid #00b67d;
+}
+.notesList{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center
+}
+.noteItem{
+    width: 300px;
+    height:260px;
+    border: 2px solid black;
+    padding:15px;
+    margin:10px;
+    border-radius:10px;
+    background-color: #00b67d;
+    font-family: "Merriweather", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+   
+}
+.noteItem:hover{
+    background-color: #EFF8C9;
+    
+}
+.nTitle h3 {
+    text-align:center;
+}
+.nTitle h3 a{ 
+    text-decoration: none;
+    color:black;
+}
+.nTitle h3 a:hover{ 
+    text-decoration: underline;
+    color:#00b67d;
+}
+.nTitle p{
+    text-align:center;
+    margin-top: 6px;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+.nBody p{
+    padding-top:5px;
+}
+.btn-delete{
+   padding:5px;
+   margin-bottom:5px;
+   font-weight:bold;
+   background-color: #EFF8C9;
+   border-radius: 5px;
+   float:right;
+   margin-top:20px;
+}
+.btn-delete:hover{
+    font-weight:bold;
+    background-color: #00b67d
+ }
+.noteEmpty{
+    text-align: center;
+}
+.noteItemDetail{
+    margin-top:80px !important;
+    display:flex;
+    flex-direction:column;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 0 auto;
+    width:700px;
+    padding:15px;
+    background-color: #EFF8C9;
+    box-shadow: 8px 8px #00b67d;
+}
+.noteItemDetail a{
+    color:black;
+}
+.noteItemDetail a:hover{
+    color:#00b67d;
+}
+
+@media only screen and (max-width: 650px) {
+    .noteInput{
+        width:450px;
+        padding:5px;
+    }
+    .Gimage{
+        display: flex;
+        flex-direction: column;
+    }
+    .Gimage .left{
+        width: 500px;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .Gimage .right img{
+      height: 300px;
+      background-size: cover;
+    }
+    .noteApp .search{
+        margin-top: 170px;
+    }
+    .noteItemDetail{
+        margin-top:80px !important;
+       width:500px;
+    }
+    Header.hd{
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+        padding:5px;
+  }
+}
