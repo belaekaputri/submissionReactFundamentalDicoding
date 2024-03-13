@@ -3,71 +3,66 @@ import PropTypes from 'prop-types'
 import { useSearchParams } from 'react-router-dom'
 import NoteList from '../components/NoteList';
 import SearchBar from '../components/SearchBar';
-import {getAllNotes,deleteNote} from '../utils/local-data';
+import {getActiveNotes,deleteNote} from '../utils/network-data';
 import GambarImage from '../components/GambarImage';
+import LocaleContext from '../contexts/LocaleContext';
+import { BiLoaderCircle } from "react-icons/bi";
 
-function HomePageWrapper(){
-    const [searchParams,setSearchParams]=useSearchParams();
-    
-    const keyword =searchParams.get('keyword');
-    
-    function changeSearchParams(keyword){
-        setSearchParams({keyword});
-    }
-
-    return <HomePage dafultKeyword={keyword} keywordChange={changeSearchParams}/>
-}
-
-
-
-class HomePage extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            notes:getAllNotes(),
-            keyword:props.dafultKeyword || '',
-        }
-        this.onDeleteHandler = this.onDeleteHandler.bind(this);
-        this.onKeywordChangeHandler= this.onKeywordChangeHandler.bind(this);
-    }
-   onDeleteHandler(id){
-       deleteNote(id);
-       this.setState(()=>{
-        return{
-            notes:getAllNotes()
-        }
-       })
-    }
-    
-
-    onKeywordChangeHandler(keyword){
-        this.setState(()=>{
-            return{
-                keyword,
-            }
+function HomePage(){
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [notes, setNotes] = React.useState([]);
+    const [keyword, setKeyword] = React.useState(() => {
+        return searchParams.get('keyword') || ''
+    });
+    const [isloading, setLoading] = React.useState(true);
+    const { locale } = React.useContext(LocaleContext);
+    React.useEffect(() => {
+        setLoading(true);
+        getActiveNotes().then(({ data }) => {
+          setNotes(data);
+          setLoading(false);
         });
+      }, []);
 
-        this.props.keywordChange(keyword); //menyalaraskan url jika kita isika nama di pencarian makan di url akan berubah
-      }
-
-    render(){
-        const notes= this.state.notes.filter((note) => {
-            return note.title.toLowerCase().includes(
-              this.state.keyword.toLowerCase()
-            );
-          });
-        return(
-            <div className="noteApp">
-                <GambarImage/>
-                 <SearchBar className='search' keyword={this.state.keyword} keywordChange={this.onKeywordChangeHandler}/>
-                <h1 className='tl'>Daftar Catatan</h1>
-                <NoteList notes={notes} onDelete={this.onDeleteHandler}/>
-            </div>
-        )
+      async function onDeleteHandler(id) {
+        await deleteNote(id);
+        const { data } = await getActiveNotes();
+        setNotes(data);
     }
+
+    function onKeywordChangeHandler(keyword) {
+        setKeyword(keyword);
+        setSearchParams({ keyword });
+    }
+
+    const filteredNotes = notes.filter((note) => {
+        return note.title.toLowerCase().includes(
+            keyword.toLowerCase()
+        );
+    });
+
+    if (isloading) 
+    return (
+        <BiLoaderCircle />
+    );
+
+    return(
+        <div className="noteApp">
+                <GambarImage/>
+                <SearchBar className='search' keyword={keyword} keywordChange={onKeywordChangeHandler}/>
+                <h1 className='tl'>{locale === 'id' ? 'Daftar Catatan' : 'Notes List'}</h1>
+                <NoteList notes={filteredNotes} onDelete={onDeleteHandler}/>
+            </div>
+    );
+
 }
+
 HomePage.propTypes = {
     dafultKeyword: PropTypes.string,
-    keywordChange :PropTypes.func.isRequired
+    keywordChange :PropTypes.func
   };
-  export default HomePageWrapper;
+  export default HomePage;
+
+
+
+

@@ -1,9 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Roboto:wght@500&display=swap');
+:root {
+    --white: #fff;
+    --black: #000;
+    --dark: #252525;
+  }
+  
+  [data-theme='dark'] {
+    --white: #000;
+    --dark:#047a55;
+    --black: #fff;
+  }
+
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body{
+   background: var(--white);
+}
+.hrf{
+    color:var(--dark);
 }
 Header.hd{
     height:50px;
@@ -24,14 +43,51 @@ Header.hd{
     width: 100%;
 }
 
+
 .hd nav > ul{
     list-style-type: none;
+    padding:5px;
 }
 .hd nav a{
     text-decoration: none;
     color:black;
+    
 }
 .hd nav a:hover,.hd .addNote a:hover{
+    color:#EFF8C9;
+}
+.btn-bahasa:hover,.btn-warna:hover{
+    color:#EFF8C9;
+}
+.btn-bahasa,.btn-warna{
+    background-color: #00b67d;;
+    color:black;
+    font-size: 20px;
+    line-height:50px;
+    border-style: none;
+    font-family: "Merriweather", serif;
+    font-weight: 500;
+    font-style: normal;
+    padding:5px;
+}
+.btn-warna{
+    margin-left:7px;
+}
+
+.btn-logout{
+    height:60px;
+    padding:10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #EFF8C9;
+    border-radius: 10px;
+    border:1px solid #00b67d;
+    font-family: "Merriweather", serif;
+    font-weight: 500;
+    font-style: normal;
+}
+.btn-logout:hover{
+    background-color:#00b67d;
     color:#EFF8C9;
 }
 
@@ -70,6 +126,7 @@ Header.hd{
     font-family: "Merriweather", serif;
     font-weight: 500;
     font-style: normal;
+    color: var(--dark);
 }
 .Gimage .left{
  width: 600px;
@@ -137,6 +194,7 @@ Header.hd{
     text-align: center;
     text-decoration: underline;
     margin-bottom:30px;
+    color: var(--dark);
 }
 form.noteInput{
     margin-top: 80px;
@@ -160,7 +218,7 @@ form.noteInput{
     margin-bottom:10px;
 }
 .noteInput input[type=text] ,
-button[type=submit]
+button[type=submit], input[type=email],input[type=password]
 {
  height:40px;
  margin:5px;
@@ -174,7 +232,7 @@ button[type=submit]
     background-color: #00b67d;
     border-radius: 5px;
 }
-.noteInput input[type=text]{
+.noteInput input[type=text],.noteInput input[type=email],.noteInput input[type=password]{
     outline:none;
     border-radius: 3px;
 }
@@ -189,7 +247,7 @@ button[type=submit]
  .noteInput textarea:focus{
     border: 2px solid #00b67d;
 }
-.noteInput input[type=text]:focus{
+.noteInput input[type=text]:focus,.noteInput input[type=email]:focus,.noteInput input[type=password]:focus{
     border: 2px solid #00b67d;
 }
 .notesList{
@@ -270,13 +328,45 @@ button[type=submit]
 .noteItemDetail a:hover{
     color:#00b67d;
 }
+section .btn-tgl{
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    background-color:#00b67d;
+}
+section .btn-tgl > p{
+    background-color: #EFF8C9;
+    padding:8px;
+    border-radius:3px;
+}
+
+section .btn-tgl p > a{
+    text-decoration: none;
+    color:black;
+}
+
+section .btn-tgl p > a:hover{
+    color:#00b67d;
+}
 
 @media only screen and (max-width: 650px) {
+    form.noteInput{
+        margin-top: 200px;
+    }
+
+    div.noteItemDetail{  
+        margin-top: 200px !important;
+    }
+    Header.hd{
+        height: 150px;
+    }
     .noteInput{
         width:450px;
         padding:5px;
     }
     .Gimage{
+        margin-top:80px;
         display: flex;
         flex-direction: column;
     }

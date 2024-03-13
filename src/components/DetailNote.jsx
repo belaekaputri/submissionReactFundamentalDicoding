@@ -5,13 +5,15 @@ import NoteItemTitle from './NoteItemTitle';
 import NoteItemBody from './NoteItemBody';
 import { Link } from 'react-router-dom';
 import {showFormattedDate} from '../utils/index';
+import LocaleContext from '../contexts/LocaleContext';
 
 function DetailNote({ title, body, createdAt,id }){
+   const {locale} = React.useContext(LocaleContext);
    return(
     <div className='noteItemDetail'>
        <NoteItemTitle title ={title} createdAt=  {showFormattedDate(createdAt)} id={id}/>
        <NoteItemBody body={body}/>
-       <h4><Link to={"/"}>Kembali</Link> </h4>
+       <h4 style={{marginTop:'10px'}}><Link to={"/"}>{locale === 'id' ?'Kembali': 'Back'} </Link> </h4>
     </div>
    ) 
 }

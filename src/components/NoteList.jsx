@@ -2,13 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NoteItem from './NoteItem';
-
+import LocaleContext from '../contexts/LocaleContext';
 
 function NoteList({ notes, onDelete }){
+    const {locale} = React.useContext(LocaleContext);
     if(notes.length===0){
         return(
             <div className='noteEmpty'>
-                <h3>Tidak Ada Catatan</h3>
+                <h3 className="hrf">{locale === 'id' ?'Tidak Ada Catatan!': 'No Note!'}</h3>
             </div>
         )
     }

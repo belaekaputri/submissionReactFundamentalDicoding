@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 class NoteInput extends React.Component{
     constructor(props){
         super(props);
@@ -37,6 +38,7 @@ class NoteInput extends React.Component{
             return {
                 title:"",
                 body: "",
+                lang: this.props.lang
             };
         });
     }
@@ -44,15 +46,16 @@ class NoteInput extends React.Component{
     render(){
         return(
             <form className='noteInput' onSubmit={this.onSubmitEventHandler}>
-              <h1>Add Note</h1>
-              <input type="text" placeholder='(untitled)' value={this.state.title} onChange={this.onTitleChangeEventHandler}/>
-              <textarea placeholder='멈추지 말고 계속 해나가기만 한다면 늦어도 상관없다.' value={this.state.body} onChange={this.onBodyChangeEventHandler}></textarea>
-              <button type='submit' className='btn-Add'>Tambah</button>
+              <h1>{this.props.lang === 'id' ? 'Tambah Catatan' : 'Add Note'}</h1>
+              <input type="text" placeholder={this.props.lang === 'id' ? 'Judul Catatan' : 'Title Note'} value={this.state.title} onChange={this.onTitleChangeEventHandler}/>
+              <textarea placeholder={this.props.lang === 'id' ? 'Isi Catatan' : 'Body Note'} value={this.state.body} onChange={this.onBodyChangeEventHandler}></textarea>
+              <button type='submit' className='btn-Add'>{this.props.lang === 'id' ? 'Tambah' : 'Add'}</button>
             </form>
         )
     }
 }
 NoteInput.propTypes = {
-    addNote: PropTypes.func
+    addNote: PropTypes.func,
+    lang : PropTypes.string
   };
 export default NoteInput;
