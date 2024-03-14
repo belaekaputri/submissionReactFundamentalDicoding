@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import PropTypes from 'prop-types';
 import ToggleTheme from '../components/ToggleTheme';
 import ToggleLocale from '../components/ToggleLocale';
 import { Link } from 'react-router-dom';
@@ -34,8 +33,4 @@ const {locale} = React.useContext(LocaleContext);
     )
     
 }
-RegisterPage.propTypes = {
-    loginSuccess: PropTypes.func
-  }
-  
-  export default RegisterPage;
+export default RegisterPage;

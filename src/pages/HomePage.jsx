@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types'
 import { useSearchParams } from 'react-router-dom'
 import NoteList from '../components/NoteList';
 import SearchBar from '../components/SearchBar';
@@ -57,11 +56,7 @@ function HomePage(){
 
 }
 
-HomePage.propTypes = {
-    dafultKeyword: PropTypes.string,
-    keywordChange :PropTypes.func
-  };
-  export default HomePage;
+export default HomePage;
 
 
 
